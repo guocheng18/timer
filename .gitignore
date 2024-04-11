@@ -1,5 +1,3 @@
-target
-src/build
-src/main/icons
-__pycache__
-.vscode
+.idea/
+venv/
+__pycache__/

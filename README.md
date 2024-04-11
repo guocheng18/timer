@@ -1,6 +1,10 @@
-## Screenshot
+## Screenshots
 
-![timer](image/screenshot.png)
+### MacOS
+![timer](image/screenshot_mac.png)
+
+### Windows
+![timer](image/screenshot_win.png)
 
 ## Download
 

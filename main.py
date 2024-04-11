@@ -1,10 +1,10 @@
 import enum
 import sys
 
-from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtCore import Qt, QTimer, QEvent
 from PyQt5.QtGui import QColorConstants
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QMainWindow, QPushButton, QSpinBox, QTextEdit, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QHBoxLayout, QLabel, QMainWindow, QPushButton, QSpinBox, QTextEdit, QVBoxLayout, QWidget, \
+    QApplication
 
 
 class TimerStatus(enum.Enum):
@@ -21,22 +21,22 @@ class TimerWidget(QWidget):
         self.minutesLabel = QLabel("Minutes:")
         self.minutesSpinBox = QSpinBox()
         self.minutesSpinBox.setFixedSize(60, 23)
-        self.minutesSpinBox.setRange(0, 10**9)
+        self.minutesSpinBox.setRange(0, 10 ** 9)
         self.minutesSpinBox.setSingleStep(5)
         self.minutesSpinBox.setFocus()
         self.minutesSpinBox.selectAll()
         self.minutesSpinBox.valueChanged.connect(self._edit_event)
         self.startButton = QPushButton(ButtonText.start)
-        self.startButton.setFixedSize(50, 23)
+        self.startButton.setFixedSize(60, 30)
         self.startButton.clicked.connect(self._start_event)
         self.resetButton = QPushButton(ButtonText.reset)
-        self.resetButton.setFixedSize(50, 23)
+        self.resetButton.setFixedSize(60, 30)
         self.resetButton.clicked.connect(self._reset_event)
         self.displayArea = QTextEdit()
         self.displayArea.setTextColor(QColorConstants.DarkBlue)
         self.displayArea.setStyleSheet("border: none")
         self.displayArea.setFontFamily("Arial")
-        self.displayArea.setFontPointSize(38)
+        self.displayArea.setFontPointSize(55)
         self.displayArea.setTextInteractionFlags(Qt.NoTextInteraction)
         self.displayArea.viewport().setCursor(Qt.ArrowCursor)
         self.displayArea.viewport().installEventFilter(self)
@@ -122,7 +122,7 @@ class TimerWindow(QMainWindow):
 
 
 if __name__ == '__main__':
-    appctxt = ApplicationContext()
+    app = QApplication(sys.argv)
     window = TimerWindow()
     window.show()
-    sys.exit(appctxt.app.exec_())
+    sys.exit(app.exec_())
